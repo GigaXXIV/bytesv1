@@ -1,0 +1,194 @@
+import {
+  CheckCircleIcon,
+  CreditCardIcon,
+  HeartIcon,
+  InformationCircleIcon,
+  KeyIcon,
+  ListBulletIcon,
+  SquaresPlusIcon,
+  UserCircleIcon,
+  UserGroupIcon,
+} from "@heroicons/react/24/outline";
+import { PlusIcon } from "@heroicons/react/20/solid";
+import ProgressTabs from "./ProgressTabs";
+
+const navigation = [
+  {
+    name: "Information",
+    href: "#",
+    icon: InformationCircleIcon,
+    current: true,
+  },
+  { name: "Ingredients", href: "#", icon: ListBulletIcon, current: false },
+  { name: "Review", href: "#", icon: CheckCircleIcon, current: false },
+];
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
+export default function RecipeForm() {
+  return (
+    <div className="lg:grid lg:grid-cols-12 lg:gap-x-5">
+      {/* Menu Navigation */}
+      <aside className="py-6 px-2 sm:px-6 lg:col-span-2 lg:py-0 lg:px-0">
+        <nav className="space-y-1">
+          {navigation.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className={classNames(
+                item.current
+                  ? "bg-gray-50 text-indigo-700 hover:bg-white hover:text-indigo-700"
+                  : "text-gray-900 hover:bg-gray-50 hover:text-gray-900",
+                "group flex items-center rounded-md px-3 py-2 text-sm font-medium"
+              )}
+              aria-current={item.current ? "page" : undefined}
+            >
+              <item.icon
+                className={classNames(
+                  item.current
+                    ? "text-indigo-500 group-hover:text-indigo-500"
+                    : "text-gray-400 group-hover:text-gray-500",
+                  "-ml-1 mr-3 h-6 w-6 flex-shrink-0"
+                )}
+                aria-hidden="true"
+              />
+              <span className="truncate">{item.name}</span>
+            </a>
+          ))}
+        </nav>
+      </aside>
+
+      {/* Information */}
+
+      <div className="space-y-1 sm:px-6 lg:col-span-9 lg:px-0">
+        <div className="">
+          <ProgressTabs />
+        </div>
+        <form action="#" method="POST">
+          <div className="shadow sm:overflow-hidden sm:rounded-md">
+            <div className="space-y-6 bg-white py-6 px-4 sm:p-6">
+              <div>
+                <h3 className="text-xl font-semibold leading-6 text-gray-900 py-2">
+                  Recipe Information
+                </h3>
+                <p className="mt-1 text-sm text-gray-500">
+                  Please fill out the following information for your patrons.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-6 gap-6">
+                <div className="col-span-6 sm:col-span-3">
+                  <label
+                    htmlFor="first-name"
+                    className="block text-sm font-medium leading-6 text-gray-900 pb-1"
+                  >
+                    What's this menu item called?
+                  </label>
+                  <input
+                    placeholder="The OG Cheeseburger"
+                    type="text"
+                    name="first-name"
+                    id="first-name"
+                    autoComplete="given-name"
+                    className="mt-2 block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+
+                {/* Description */}
+                <div className="col-span-6 sm:col-span-4 mb-8">
+                  <label
+                    htmlFor="email-address"
+                    className="block text-sm font-medium leading-6 text-gray-900 pb-1"
+                  >
+                    Describe it to us. Makes us want it!
+                  </label>
+                  <textarea
+                    id="description"
+                    placeholder="A perfectly soft bun, quality, juicy meat that is seasoned well, plenty of cheese and our infamously good secret sauce."
+                    rows={4}
+                    className="mt-2 block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div className="relative">
+                <div
+                  className="absolute inset-0 flex items-center"
+                  aria-hidden="true"
+                >
+                  <div className="w-full border-t border-gray-300" />
+                </div>
+                <div className="relative flex justify-center">
+                  <span className="bg-white px-2 text-gray-500">
+                    <PlusIcon
+                      className="h-5 w-5 text-gray-500"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </div>
+              </div>
+
+              {/* Recipe Photo */}
+              <div className="col-span-6 sm:col-span-6 lg:col-span-2"></div>
+              <div className="col-span-3">
+                <label className="block t mt-8 text-xl font-medium leading-6 text-gray-900 py-2">
+                  Recipe Photo
+                </label>
+                <p className="mt-1 text-sm text-gray-500 pb-2">
+                  A picture speaks a 1000 words. What does your picture say?
+                </p>
+                <div className="mt-2 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+                  <div className="space-y-1 text-center">
+                    <svg
+                      className="mx-auto h-12 w-12 text-gray-400"
+                      stroke="currentColor"
+                      fill="none"
+                      viewBox="0 0 48 48"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <div className="flex text-sm text-gray-600">
+                      <label
+                        htmlFor="file-upload"
+                        className="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500 "
+                      >
+                        <span>Upload a file</span>
+                        <input
+                          id="file-upload"
+                          name="file-upload"
+                          type="file"
+                          className="sr-only"
+                        />
+                      </label>
+                      <p className="pl-1">or drag and drop</p>
+                    </div>
+                    <p className="text-xs text-gray-500">
+                      PNG, JPG, GIF up to 10MB
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
+              <button
+                type="submit"
+                className="inline-flex justify-center rounded-md bg-indigo-600 py-2 px-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
