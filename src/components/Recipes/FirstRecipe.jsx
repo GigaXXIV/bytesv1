@@ -1,6 +1,21 @@
 import { PlusIcon } from "@heroicons/react/20/solid";
+import { useRouter } from "next/router";
 
 export default function FirstRecipe() {
+  const router = useRouter();
+
+  const createRecipe = () => {
+    const { category } = router.query;
+    // 2  - Add a conditional to determine if the user goes to communityId, or they get directed to the Directory Menu.
+    if (category) {
+      // 1 - uses Router Hook to redirect the user to wherever we like.
+      router.push(`/${category}/create`);
+      return;
+    } // 3 - Open directory menu.
+
+    // toggleMenuOpen();
+  };
+
   return (
     <div className="max-w-[1800px] min-w-[150px] flex flex-col items-center">
       <svg
@@ -24,6 +39,7 @@ export default function FirstRecipe() {
       </p>
       <div className="mt-6">
         <button
+          onClick={createRecipe}
           type="button"
           className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >

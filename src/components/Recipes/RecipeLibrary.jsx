@@ -2,6 +2,8 @@ import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/20/solid";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import supabase from "../../config/supabaseClient";
 
 const recipes = [
   {
@@ -19,38 +21,6 @@ const recipes = [
     email: "",
     telephone: "+1-202-555-0170",
     imageUrl: "https://i.imgur.com/kWPi6sK.jpg",
-  },
-  {
-    name: "Eggs and Avo on Toast",
-    description: "Worth the $20",
-    status: "Complete",
-    email: "janecooper@example.com",
-    telephone: "+1-202-555-0170",
-    imageUrl: "https://i.imgur.com/NMArc4X.jpg",
-  },
-  {
-    name: "Eggs and Avo on Toast",
-    description: "Worth the $20",
-    status: "Complete",
-    email: "janecooper@example.com",
-    telephone: "+1-202-555-0170",
-    imageUrl: "https://i.imgur.com/NMArc4X.jpg",
-  },
-  {
-    name: "Eggs and Avo on Toast",
-    description: "Worth the $20",
-    status: "Complete",
-    email: "janecooper@example.com",
-    telephone: "+1-202-555-0170",
-    imageUrl: "https://i.imgur.com/NMArc4X.jpg",
-  },
-  {
-    name: "Eggs and Avo on Toast",
-    description: "Worth the $20",
-    status: "Complete",
-    email: "janecooper@example.com",
-    telephone: "+1-202-555-0170",
-    imageUrl: "https://i.imgur.com/NMArc4X.jpg",
   },
   {
     name: "Eggs and Avo on Toast",
