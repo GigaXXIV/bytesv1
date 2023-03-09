@@ -1,41 +1,6 @@
-import supabase from "@/config/supabaseClient";
 import React, { useState } from "react";
 
 const RecipeCard = () => {
-  const [recipe, setRecipe] = useState("");
-  const [description, setDescription] = useState("");
-  const [imageURL, setImageURL] = useState("");
-  const [formError, setFormError] = useState("");
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!recipe || !description) {
-      setFormError("Please fill in the Title and Description fields.");
-      return;
-    }
-    console.log(recipe, description);
-
-    // Post to DB
-    const { data, error } = await supabase
-      .from("recipes")
-      // An array of rows. Each object represents a row. If I wanted 3 rows, I'd have 3 different objects. i.e. [{}, {}, {}]
-      // We are inserting 3 different pieces of state.
-      .insert([{ recipe, description, image_url }])
-      .select();
-
-    if (error) {
-      console.log(error);
-      setFormError("Please fill in all the fields correctly.");
-    }
-
-    if (data) {
-      setFormError(null);
-      console.log(data);
-      // redirect to home page.
-      navigate("/");
-    }
-  };
-
   return (
     <li
       key={recipe.name}

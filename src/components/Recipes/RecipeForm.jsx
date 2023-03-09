@@ -1,15 +1,12 @@
+import supabase from "@/config/supabaseClient";
+import { PlusIcon } from "@heroicons/react/20/solid";
 import {
   CheckCircleIcon,
-  CreditCardIcon,
-  HeartIcon,
   InformationCircleIcon,
-  KeyIcon,
   ListBulletIcon,
-  SquaresPlusIcon,
-  UserCircleIcon,
-  UserGroupIcon,
 } from "@heroicons/react/24/outline";
-import { PlusIcon } from "@heroicons/react/20/solid";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import ProgressTabs from "./ProgressTabs";
 
 const navigation = [
@@ -28,6 +25,57 @@ function classNames(...classes) {
 }
 
 export default function RecipeForm() {
+  const router = useRouter();
+  const [recipe, setRecipe] = useState("");
+  const [description, setDescription] = useState("");
+  const [serves, setServes] = useState("");
+  const [imageURL, setImageURL] = useState("");
+  const [formError, setFormError] = useState("");
+
+  //   console.log("Recipe State: ", recipe);
+  //   console.log("Description State: ", description);
+
+  //   console.log(router.query.category);
+
+  const handleSubmit = async (e) => {
+    const category = router.query.category;
+
+    e.preventDefault();
+    if (!recipe || !description) {
+      setFormError("Please fill in the Title and Description fields.");
+      return;
+    }
+    // console.log(recipe, description);
+
+    // Post to DB
+    const { data, error } = await supabase
+      .from("recipes")
+      // An array of rows. Each object represents a row. If I wanted 3 rows, I'd have 3 different objects. i.e. [{}, {}, {}]
+      // We are inserting 3 different pieces of state.
+      .insert([
+        {
+          recipe: recipe,
+          description: description,
+          image_url: imageURL,
+          serves: serves,
+          category: category,
+        },
+      ])
+      .select();
+
+    if (error) {
+      console.log(error);
+      setFormError("Please fill in all the fields correctly.");
+    }
+
+    if (data) {
+      setFormError(null);
+      console.log(data);
+      // redirect to home page.
+      //   navigate("/");
+    }
+  };
+
   return (
     <div className="lg:grid lg:grid-cols-12 lg:gap-x-5">
       {/* Menu Navigation */}
@@ -66,7 +114,7 @@ export default function RecipeForm() {
         <div className="">
           <ProgressTabs />
         </div>
-        <form action="#" method="POST">
+        <form onSubmit={handleSubmit} action="#" method="POST">
           <div className="shadow sm:overflow-hidden sm:rounded-md">
             <div className="space-y-6 bg-white py-6 px-4 sm:p-6">
               <div>
@@ -78,6 +126,7 @@ export default function RecipeForm() {
                 </p>
               </div>
 
+              {/* Recipe */}
               <div className="grid grid-cols-6 gap-6">
                 <div className="col-span-6 sm:col-span-3">
                   <label
@@ -87,6 +136,8 @@ export default function RecipeForm() {
                     What's this menu item called?
                   </label>
                   <input
+                    value={recipe}
+                    onChange={(e) => setRecipe(e.target.value)}
                     placeholder="The OG Cheeseburger"
                     type="text"
                     name="first-name"
@@ -105,12 +156,55 @@ export default function RecipeForm() {
                     Describe it to us. Makes us want it!
                   </label>
                   <textarea
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                     id="description"
                     placeholder="A perfectly soft bun, quality, juicy meat that is seasoned well, plenty of cheese and our infamously good secret sauce."
                     rows={4}
                     className="mt-2 block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
+              </div>
+
+              <div className="col-span-6 sm:col-span-3">
+                <label
+                  htmlFor="first-name"
+                  className="block text-sm font-medium leading-6 text-gray-900 pb-1"
+                >
+                  How many people does this serve?
+                </label>
+                <p className="mt-1 text-sm text-gray-500">
+                  Total number of serves this is for. Leave as 1 for default.
+                  Numbers only.
+                </p>
+                <input
+                  value={serves}
+                  onChange={(e) => setServes(e.target.value)}
+                  placeholder="1"
+                  type="number"
+                  name="serves"
+                  id="serves"
+                  className="max-w-[80px] text-center mt-2 block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+
+              {/* Temp ImageURL */}
+              <div className="col-span-6 sm:col-span-3">
+                <label
+                  htmlFor="first-name"
+                  className="block text-sm font-medium leading-6 text-gray-900 pb-1"
+                >
+                  Upload a photo of your recipe!
+                </label>
+                <input
+                  value={imageURL}
+                  onChange={(e) => setImageURL(e.target.value)}
+                  placeholder=""
+                  type="text"
+                  name="imageURL"
+                  id="imageURL"
+                  className="mt-2 block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
               </div>
 
               {/* Divider */}
