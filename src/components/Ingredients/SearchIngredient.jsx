@@ -7,47 +7,43 @@ import { ChevronRightIcon } from "@heroicons/react/20/solid";
 const people = [
   {
     id: 1,
-    name: "Leslie Alexander - 0",
+    name: "Food - 0",
     phone: "1-493-747-9031",
-    email: "lesliealexander@example.com",
-    role: "Co-Founder / CEO",
+    email: "Test",
+    role: "Food",
     url: "https://example.com",
     profileUrl: "#",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    imageUrl: "https://i.imgur.com/XgfPsdR.png",
   },
   {
     id: 1,
-    name: "Leslie Alexander - 1",
+    name: "Food - 1",
     phone: "1-493-747-9031",
-    email: "lesliealexander@example.com",
-    role: "Co-Founder / CEO",
+    email: "Test",
+    role: "food",
     url: "https://example.com",
     profileUrl: "#",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    imageUrl: "https://i.imgur.com/XgfPsdR.png",
   },
   {
     id: 1,
-    name: "Leslie Alexander - 2",
+    name: "Food - 2",
     phone: "1-493-747-9031",
-    email: "lesliealexander@example.com",
-    role: "Co-Founder / CEO",
+    email: "Test",
+    role: "food",
     url: "https://example.com",
     profileUrl: "#",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    imageUrl: "https://i.imgur.com/XgfPsdR.png",
   },
   {
     id: 1,
-    name: "Leslie Alexander - 3",
+    name: "Food - 3",
     phone: "1-493-747-9031",
-    email: "lesliealexander@example.com",
-    role: "Co-Founder / CEO",
+    email: "Test",
+    role: "food",
     url: "https://example.com",
     profileUrl: "#",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    imageUrl: "https://i.imgur.com/XgfPsdR.png",
   },
   // More people...
 ];

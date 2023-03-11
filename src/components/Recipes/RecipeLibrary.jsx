@@ -28,7 +28,7 @@ export default function RecipeLibrary() {
         {recipes.map((recipe) => (
           <li
             key={recipe.recipe}
-            className="min-w-[240px] max-w-[280px] col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
+            className="min-w-[280px] max-w-[280px] col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
           >
             <div className="flex flex-1 flex-col p-8">
               <img
