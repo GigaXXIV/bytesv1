@@ -1,4 +1,4 @@
-import RecipeForm from "@/components/Recipes/RecipeForm";
+import RecipeForm from "@/components/Recipes/RecipeShell";
 import React from "react";
 
 const create = () => {

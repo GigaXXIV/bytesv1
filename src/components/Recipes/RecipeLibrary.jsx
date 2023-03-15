@@ -2,39 +2,22 @@ import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/20/solid";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import supabase from "../../config/supabaseClient";
-
-const recipes = [
-  {
-    name: "OG Cheeseburger",
-    description: "Our original crowd pleaser. ",
-    status: "Complete",
-    email: "janecooper@example.com",
-    telephone: "+1-202-555-0170",
-    imageUrl: "https://i.imgur.com/q4XgyAR.jpg",
-  },
-  {
-    name: "Rainbow Salad",
-    description: "Taste the rainbow",
-    status: "Complete",
-    email: "",
-    telephone: "+1-202-555-0170",
-    imageUrl: "https://i.imgur.com/kWPi6sK.jpg",
-  },
-  {
-    name: "Eggs and Avo on Toast",
-    description: "Worth the $20",
-    status: "Complete",
-    email: "janecooper@example.com",
-    telephone: "+1-202-555-0170",
-    imageUrl: "https://i.imgur.com/NMArc4X.jpg",
-  },
-  // More recipes...
-];
 
 export default function RecipeLibrary() {
   const router = useRouter();
+  const [recipes, setRecipes] = useState([]);
+
+  const handleFetch = async function getServerSideProps() {
+    let { data } = await supabase.from("recipes").select();
+    console.log(data);
+    setRecipes(data);
+  };
+
+  useEffect(() => {
+    handleFetch();
+  }, []);
 
   return (
     <div className="max-w-[1800px] flex flex-1 flex-row justify-start">
@@ -44,17 +27,17 @@ export default function RecipeLibrary() {
       >
         {recipes.map((recipe) => (
           <li
-            key={recipe.name}
-            className="min-w-[240px] max-w-[280px] col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
+            key={recipe.recipe}
+            className="min-w-[280px] max-w-[280px] col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
           >
             <div className="flex flex-1 flex-col p-8">
               <img
                 className="mx-auto h-32 w-32 flex-shrink-0 rounded-full object-cover"
-                src={recipe.imageUrl}
+                src={recipe.image_url}
                 alt=""
               />
               <h3 className="mt-6 text-sm font-medium text-gray-900">
-                {recipe.name}
+                {recipe.recipe}
               </h3>
               <dl className="flex flex-grow flex-col justify-between py-3 ">
                 <dt className="sr-only">description</dt>
