@@ -4,6 +4,8 @@ import Link from "next/link";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 const RecipeCard = () => {
+  const recipe = null;
+
   return (
     <li
       key={recipe.name}
