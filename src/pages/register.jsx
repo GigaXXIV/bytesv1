@@ -1,7 +1,7 @@
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 import React, { useState } from "react";
 
-const register = () => {
+export default function Register() {
   const user = useUser();
   const supabase = useSupabaseClient();
   const [email, setEmail] = useState("");
@@ -195,6 +195,4 @@ const register = () => {
       )}
     </div>
   );
-};
-
-export default register;
+}

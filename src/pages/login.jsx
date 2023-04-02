@@ -1,7 +1,7 @@
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 import React, { useState } from "react";
 
-const login = () => {
+export default function Login() {
   const user = useUser();
   const supabase = useSupabaseClient();
   const [email, setEmail] = useState("");
@@ -23,6 +23,7 @@ const login = () => {
       alert("Successful Log In");
     }
   };
+
   return (
     <div>
       {user === null ? (
@@ -203,6 +204,4 @@ const login = () => {
       )}
     </div>
   );
-};
-
-export default login;
+}
