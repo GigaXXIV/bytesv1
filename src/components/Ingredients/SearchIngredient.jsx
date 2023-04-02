@@ -3,6 +3,7 @@ import { Combobox, Dialog, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { UsersIcon } from "@heroicons/react/24/outline";
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
+import Image from "next/image";
 
 const people = [
   {
@@ -149,10 +150,12 @@ export default function SearchIngredient() {
                                 >
                                   {({ active }) => (
                                     <>
-                                      <img
+                                      <Image
                                         src={person.imageUrl}
                                         alt=""
-                                        className="h-6 w-6 flex-none rounded-full"
+                                        width={24}
+                                        height={24}
+                                        className="last:flex-none rounded-full"
                                       />
                                       <span className="ml-3 flex-auto truncate">
                                         {person.name}
@@ -174,7 +177,7 @@ export default function SearchIngredient() {
                         {activeOption && (
                           <div className="hidden h-96 w-1/2 flex-none flex-col divide-y divide-gray-100 overflow-y-auto sm:flex">
                             <div className="flex-none p-6 text-center">
-                              <img
+                              <Image
                                 src={activeOption.imageUrl}
                                 alt=""
                                 className="mx-auto h-16 w-16 rounded-full"

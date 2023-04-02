@@ -31,7 +31,9 @@ export default function Example() {
             </h1>
             <p className="mt-2 text-sm text-gray-700">
               Please list all ingredients that are found in this recipe. View
-              our guide 'Logging Recipe Ingredients' for more information.
+              our guide{" "}
+              <span className="font-semibold">Logging Recipe Ingredients </span>
+              for more information.
             </p>
           </div>
           <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">

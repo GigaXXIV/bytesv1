@@ -65,7 +65,7 @@ const RecipeInfo = ({ category }) => {
                 htmlFor="first-name"
                 className="block text-sm font-medium leading-6 text-gray-900 pb-1"
               >
-                What's this menu item called?
+                What is this menu item called?
               </label>
               <input
                 value={recipe}

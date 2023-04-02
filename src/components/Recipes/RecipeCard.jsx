@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 const RecipeCard = () => {
   return (
@@ -7,7 +10,7 @@ const RecipeCard = () => {
       className="min-w-[240px] max-w-[280px] col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
     >
       <div className="flex flex-1 flex-col p-8">
-        <img
+        <Image
           className="mx-auto h-32 w-32 flex-shrink-0 rounded-full object-cover"
           src={recipe.imageUrl}
           alt=""

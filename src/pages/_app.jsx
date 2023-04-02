@@ -12,6 +12,7 @@ import {
 // import { SessionContextProvider } from "@supabase/auth-helpers-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import { Fragment, useState } from "react";
 
 // Profile Menu Drop Down Items
@@ -134,7 +135,7 @@ export default function App({ Component, pageProps }) {
                     {/* Logo Top of Menu Nav */}
                   </Transition.Child>
                   <div className="flex flex-shrink-0 items-center px-4">
-                    <img
+                    <Image
                       className="h-8 w-auto"
                       src="https://i.imgur.com/UdNrXle.png"
                       alt="Your Company"
@@ -178,7 +179,7 @@ export default function App({ Component, pageProps }) {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex flex-grow flex-col overflow-y-auto bg-indigo-700 pt-5">
             <div className="flex flex-shrink-0 items-center px-4">
-              <img
+              <Image
                 className="h-8 w-auto"
                 src="https://i.imgur.com/UdNrXle.png"
                 alt="Your Company"
@@ -193,7 +194,7 @@ export default function App({ Component, pageProps }) {
                 <Menu.Button className="group w-full rounded-md bg-indigo-700 px-3 pt-5 pb-3 text-left text-sm font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-100">
                   <span className="flex w-full justify-between">
                     <span className="flex min-w-0 items-center justify-between space-x-5">
-                      <img
+                      <Image
                         className="h-12 w-12 flex-shrink-0 rounded-full bg-gray-300"
                         src="https://i.imgur.com/jjbOb7E.png"
                         alt=""
@@ -294,7 +295,7 @@ export default function App({ Component, pageProps }) {
                     {/* Profile Picture Button */}
                     <Menu.Button className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                       <span className="sr-only">Open user menu</span>
-                      <img
+                      <Image
                         className="h-8 w-8 rounded-full"
                         src="https://i.imgur.com/jjbOb7E.png"
                         alt=""

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import supabase from "../../config/supabaseClient";
+import Image from "next/image";
 
 export default function RecipeLibrary() {
   const router = useRouter();
@@ -31,7 +32,7 @@ export default function RecipeLibrary() {
             className="min-w-[280px] max-w-[280px] col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
           >
             <div className="flex flex-1 flex-col p-8">
-              <img
+              <Image
                 className="mx-auto h-32 w-32 flex-shrink-0 rounded-full object-cover"
                 src={recipe.image_url}
                 alt=""
