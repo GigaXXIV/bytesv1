@@ -15,6 +15,8 @@ const RecipeCard = () => {
         <Image
           className="mx-auto h-32 w-32 flex-shrink-0 rounded-full object-cover"
           src={recipe.imageUrl}
+          width={128}
+          height={128}
           alt=""
         />
         <h3 className="mt-6 text-sm font-medium text-gray-900">

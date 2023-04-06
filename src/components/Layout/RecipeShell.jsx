@@ -9,8 +9,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import AddIngredients from "../Ingredients/AddIngredients";
-import ProgressTabs from "./ProgressTabs";
-import RecipeInfo from "./RecipeInfo";
+import ProgressTabs from "../Recipes/Create/ProgressTabs";
+import RecipeInfo from "../Recipes/Create/RecipeInfo";
 
 export default function RecipeForm() {
   const router = useRouter();

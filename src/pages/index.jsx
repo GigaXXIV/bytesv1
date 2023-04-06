@@ -1,3 +1,9 @@
+import UILayout from "@/components/Layout/UILayout";
+
 export default function Home() {
-  return <div>Hello</div>;
+  return (
+    <UILayout>
+      <div>Hello</div>
+    </UILayout>
+  );
 }

@@ -10,7 +10,7 @@ export default function NewIngredient() {
     // This function needs to go into the SearchIngredients component.
 
     // Change the state of setlist to true if there has been an ingredient added by the SearchIngredient component.
-    setList(true);
+    setList(false);
   };
 
   return (

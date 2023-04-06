@@ -3,7 +3,7 @@ import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import supabase from "../../config/supabaseClient";
+import supabase from "../../../config/supabaseClient";
 import Image from "next/image";
 
 export default function RecipeLibrary() {
@@ -35,6 +35,8 @@ export default function RecipeLibrary() {
               <Image
                 className="mx-auto h-32 w-32 flex-shrink-0 rounded-full object-cover"
                 src={recipe.image_url}
+                width={128}
+                height={128}
                 alt=""
               />
               <h3 className="mt-6 text-sm font-medium text-gray-900">

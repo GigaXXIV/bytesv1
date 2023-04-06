@@ -16,7 +16,6 @@ const RecipeInfo = ({ category }) => {
       return;
     }
     // console.log(recipe, description);
-
     // Post to DB
     const { data, error } = await supabase
       .from("recipes")
@@ -32,12 +31,10 @@ const RecipeInfo = ({ category }) => {
         },
       ])
       .select();
-
     if (error) {
       console.log(error);
       setFormError("Please fill in all the fields correctly.");
     }
-
     if (data) {
       setFormError(null);
       console.log(data);
@@ -45,6 +42,7 @@ const RecipeInfo = ({ category }) => {
       //   navigate("/");
     }
   };
+
   return (
     <form onSubmit={handleSubmit} action="#" method="POST">
       <div className="shadow sm:overflow-hidden sm:rounded-md">

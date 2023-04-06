@@ -1,8 +1,13 @@
-import RecipeForm from "@/components/Recipes/RecipeShell";
+import UILayout from "@/components/Layout/UILayout";
+import RecipeShell from "@/components/Layout/RecipeShell";
 import React from "react";
 
 const create = () => {
-  return <RecipeForm />;
+  return (
+    <UILayout>
+      <RecipeShell />;
+    </UILayout>
+  );
 };
 
 export default create;

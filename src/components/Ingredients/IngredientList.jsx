@@ -1,17 +1,54 @@
 import { useState } from "react";
 import SearchIngredient from "./SearchIngredient";
 
-const fields = [
+const ingredients = [
   {
-    ingredient: "Pasta, Plain, Boiled",
+    id: 1,
+    name: "Bun, Brioche, Gourmet",
+    amount: "1",
+    amountType: "63g Bun",
+    kcals: "195",
+    kj: "815.1",
+    protein: "6",
+    carbohydrate: "31.9",
+    fat: "4.3",
+    fibre: "1.6",
+  },
+  {
+    id: 2,
+    name: "Cheese, Swiss",
     amount: "100",
     amountType: "g",
-    kcals: "163",
-    kj: "681.3",
-    protein: "5.4",
-    carbohydrate: "27.1",
-    fat: "0.5",
-    fibre: "2.7",
+    kcals: "418",
+    kj: "1747.2",
+    protein: "30.8",
+    carbohydrate: "0.1",
+    fat: "32.4",
+    fibre: "0.1",
+  },
+  {
+    id: 3,
+    name: "Heinz, Special Burger Sauce",
+    amount: "100",
+    amountType: "ml",
+    kcals: "445",
+    kj: "1860",
+    protein: "1.2",
+    carbohydrate: "11.1",
+    fat: "44.2",
+    fibre: "0.1",
+  },
+  {
+    id: 4,
+    name: "Beef Mince, Regular, 15% Fat, Raw",
+    amount: "100",
+    amountType: "g",
+    kcals: "226",
+    kj: "994.7",
+    protein: "19.9",
+    carbohydrate: "0.1",
+    fat: "15.5",
+    fibre: "0.0",
   },
 ];
 
@@ -126,8 +163,8 @@ export default function Example() {
 
                 {/* Table Body */}
                 <tbody className="divide-y divide-gray-200">
-                  {fields.map((field) => (
-                    <tr key={field.ingredient}>
+                  {ingredients.map((ingredient) => (
+                    <tr key={ingredient.name}>
                       <td className="w-20  py-4 pl-4 pr-3 sm:pl-0">
                         <div className="flex justify-center h-6 pr-2 pt-1 ">
                           <input
@@ -140,38 +177,39 @@ export default function Example() {
                         </div>
                       </td>
                       <td className="w-1/10 whitespace-nowrap py-4 px-1 text-sm text-gray-500">
-                        {field.ingredient}
+                        {ingredient.name}
                       </td>
                       <td className="whitespace-nowrap py-4 px-1 text-center text-sm text-gray-500">
-                        {field.amount}
+                        {ingredient.amount}
                       </td>
                       <td className="whitespace-nowrap py-4 px-1 text-center text-sm text-gray-500">
-                        {field.amountType}
+                        {ingredient.amountType}
                       </td>
                       <td className="whitespace-nowrap py-4 px-1 text-center text-sm text-gray-500">
-                        {field.kcals}
+                        {ingredient.kcals}
                       </td>
                       <td className="whitespace-nowrap py-4 px-1 text-center text-sm text-gray-500">
-                        {field.kj}
+                        {ingredient.kj}
                       </td>
                       <td className="whitespace-nowrap py-4 px-1 text-center text-sm text-gray-500">
-                        {field.protein}
+                        {ingredient.protein}
                       </td>
                       <td className="whitespace-nowrap py-4 px-1 text-center text-sm text-gray-500">
-                        {field.carbohydrate}
+                        {ingredient.carbohydrate}
                       </td>
                       <td className="whitespace-nowrap py-4 px-1 text-center text-sm text-gray-500">
-                        {field.fat}
+                        {ingredient.fat}
                       </td>
                       <td className="whitespace-nowrap py-4 px-1 text-center text-sm text-gray-500">
-                        {field.fibre}
+                        {ingredient.fibre}
                       </td>
                       <td className="w-28 relative whitespace-nowrap py-4 pl-1 pr-1 text-right text-sm font-medium sm:pr-0">
                         <a
                           href="#"
                           className="text-indigo-600 hover:text-indigo-900"
                         >
-                          Edit<span className="sr-only">, {field.name}</span>
+                          Edit
+                          <span className="sr-only">, {ingredient.name}</span>
                         </a>
                       </td>
                     </tr>

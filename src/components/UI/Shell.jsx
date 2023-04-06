@@ -1,45 +1,18 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
-
-import React from "react";
-import { Fragment, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
+import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import {
   Bars3BottomLeftIcon,
   BellIcon,
-  CalendarIcon,
-  ChartBarIcon,
   FolderIcon,
   HomeIcon,
-  InboxIcon,
-  UsersIcon,
   XMarkIcon,
-  ChevronUpDownIcon,
 } from "@heroicons/react/24/outline";
-import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
+// import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
+// import { SessionContextProvider } from "@supabase/auth-helpers-react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import Image from "next/image";
-
-// Menu Navigation Items
-const navigation = [
-  { name: "Home", href: "#", icon: HomeIcon, current: true },
-  { name: "Team", href: "#", icon: UsersIcon, current: false },
-  { name: "Projects", href: "#", icon: FolderIcon, current: false },
-  { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
-  { name: "Documents", href: "#", icon: InboxIcon, current: false },
-  { name: "Reports", href: "#", icon: ChartBarIcon, current: false },
-];
+import { Fragment, useState } from "react";
 
 // Profile Menu Drop Down Items
 const userNavigation = [
@@ -52,11 +25,54 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const Shell = () => {
+export default function Shell({ children }) {
+  // const [supabaseClient] = useState(() => createBrowserSupabaseClient());
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Menu Navigation Items
+
+  const router = useRouter();
+
+  const navigation = [
+    { name: "Home", href: "/", icon: HomeIcon, current: false },
+    {
+      name: "Starters",
+      href: "/starters",
+      icon: FolderIcon,
+      current: router.pathname === "/starters",
+    },
+    {
+      name: "Mains",
+      href: "/mains",
+      icon: FolderIcon,
+      current: router.pathname === "/mains",
+    },
+    {
+      name: "Desserts",
+      href: "/desserts",
+      icon: FolderIcon,
+      current: router.pathname === "/desserts",
+    },
+    {
+      name: "Condiments",
+      href: "/condiments",
+      icon: FolderIcon,
+      current: router.pathname === "/condiments",
+    },
+    {
+      name: "Beverages",
+      href: "/beverages",
+      icon: FolderIcon,
+      current: router.pathname === "/beverages",
+    },
+  ];
 
   return (
     <>
+      {/* <SessionContextProvider
+        supabaseClient={supabaseClient}
+        initialSession={pageProps.initialSesssion}
+      > */}
       {/* Mobile Responsive Menu */}
       <div>
         {/* Mobile Transitions */}
@@ -120,7 +136,9 @@ const Shell = () => {
                   <div className="flex flex-shrink-0 items-center px-4">
                     <Image
                       className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=300"
+                      src="/bytesemblemwhite.png"
+                      width="100"
+                      height="100"
                       alt="Your Company"
                     />
                   </div>
@@ -164,7 +182,9 @@ const Shell = () => {
             <div className="flex flex-shrink-0 items-center px-4">
               <Image
                 className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=300"
+                src="/bytesemblemwhite.png"
+                width="32"
+                height="32"
                 alt="Your Company"
               />
             </div>
@@ -179,7 +199,9 @@ const Shell = () => {
                     <span className="flex min-w-0 items-center justify-between space-x-5">
                       <Image
                         className="h-12 w-12 flex-shrink-0 rounded-full bg-gray-300"
-                        src="https://i.imgur.com/jjbOb7E.png"
+                        src="/samplelogo.png"
+                        width="48"
+                        height="48"
                         alt=""
                       />
                       <span className="flex min-w-0 flex-1 flex-col">
@@ -187,14 +209,14 @@ const Shell = () => {
                           Giga XXIV
                         </span>
                         {/* <span className="truncate text-sm text-white">
-                          @jessyschwarz
-                        </span> */}
+                            @jessyschwarz
+                          </span> */}
                       </span>
                     </span>
                     {/* <ChevronUpDownIcon
-                      className="h-5 w-5 flex-shrink-0 text-white group-hover:text-gray-500"
-                      aria-hidden="true"
-                    /> */}
+                        className="h-5 w-5 flex-shrink-0 text-white group-hover:text-gray-500"
+                        aria-hidden="true"
+                      /> */}
                   </span>
                 </Menu.Button>
               </div>
@@ -203,7 +225,7 @@ const Shell = () => {
             <div className="mt-5 flex flex-1 flex-col">
               <nav className="flex-1 space-y-1 px-2 pb-4">
                 {navigation.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
                     className={classNames(
@@ -218,7 +240,7 @@ const Shell = () => {
                       aria-hidden="true"
                     />
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </nav>
             </div>
@@ -280,7 +302,9 @@ const Shell = () => {
                       <span className="sr-only">Open user menu</span>
                       <Image
                         className="h-8 w-8 rounded-full"
-                        src="https://i.imgur.com/jjbOb7E.png"
+                        src="/samplelogo.png"
+                        width="48"
+                        height="48"
                         alt=""
                       />
                     </Menu.Button>
@@ -319,21 +343,19 @@ const Shell = () => {
 
           <main>
             <div className="py-6">
-              <div className="mx-auto max-w-10xl px-4 sm:px-6 lg:px-8">
+              <div className="mx-auto py-2 max-w-10xl px-4 sm:px-6 lg:px-8">
                 <h1 className="text-2xl font-semibold text-gray-900">
                   Dashboard
                 </h1>
               </div>
-              <div className="max-w-7xl px-4 sm:px-6 lg:px-8">
-                {/* <p>This is some test text. </p> */}
-                {/* Your content */}
+              <div className="w-max-[1800px] p-44 sm:px-6 lg:p-8">
+                {children}
               </div>
             </div>
           </main>
         </div>
       </div>
+      {/* </SessionContextProvider> */}
     </>
   );
-};
-
-export default Shell;
+}
