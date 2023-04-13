@@ -1,5 +1,5 @@
 import UILayout from "@/components/Layout/UILayout";
-import NewRecipe from "@/components/Recipes/Create/NewRecipe";
+import NewRecipe from "@/components/Recipes/Create/RecipeNew";
 import RecipeForm from "@/components/Layout/RecipeShell";
 import RecipeLibrary from "@/components/Recipes/View/RecipeLibrary";
 import React from "react";

@@ -1,7 +1,7 @@
 import { PlusIcon } from "@heroicons/react/20/solid";
 import { useRouter } from "next/router";
 
-export default function NewRecipe() {
+export default function RecipeNew() {
   const router = useRouter();
 
   const createRecipe = () => {

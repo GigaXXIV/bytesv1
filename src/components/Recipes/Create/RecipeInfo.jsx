@@ -2,22 +2,24 @@ import supabase from "@/config/supabaseClient";
 import React, { useState } from "react";
 import { PlusIcon } from "@heroicons/react/20/solid";
 
-const RecipeInfo = ({ category }) => {
+const RecipeInfo = ({ category, onSubmit }) => {
   const [recipe, setRecipe] = useState("");
   const [description, setDescription] = useState("");
   const [serves, setServes] = useState("");
   const [imageURL, setImageURL] = useState("");
-  const [formError, setFormError] = useState("");
+  const [formError, setFormError] = useState(
+    "Please ensure all fields are filled out before submitting."
+  );
 
-  const handleSubmit = async (e) => {
+  const submitRecipe = async (e) => {
     e.preventDefault();
-    if (!recipe || !description) {
-      setFormError("Please fill in the Title and Description fields.");
+    if (!recipe || !description || !serves || !category) {
+      console.log(formError);
       return;
     }
     // console.log(recipe, description);
     // Post to DB
-    const { data, error } = await supabase
+    const { data: recipeData, error } = await supabase
       .from("recipes")
       // An array of rows. Each object represents a row. If I wanted 3 rows, I'd have 3 different objects. i.e. [{}, {}, {}]
       // We are inserting 3 different pieces of state.
@@ -25,7 +27,6 @@ const RecipeInfo = ({ category }) => {
         {
           recipe: recipe,
           description: description,
-          image_url: imageURL,
           serves: serves,
           category: category,
         },
@@ -33,18 +34,19 @@ const RecipeInfo = ({ category }) => {
       .select();
     if (error) {
       console.log(error);
-      setFormError("Please fill in all the fields correctly.");
+      setFormError("Error with Form Submission. Please try again.");
     }
-    if (data) {
+    if (recipeData) {
       setFormError(null);
-      console.log(data);
+      console.log("Successfuly created new recipe: ", recipeData);
+      onSubmit(recipeData);
       // redirect to home page.
       //   navigate("/");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} action="#" method="POST">
+    <form onSubmit={submitRecipe} action="#" method="POST">
       <div className="shadow sm:overflow-hidden sm:rounded-md">
         <div className="space-y-6 bg-white py-6 px-4 sm:p-6">
           <div>
@@ -115,25 +117,6 @@ const RecipeInfo = ({ category }) => {
               name="serves"
               id="serves"
               className="max-w-[80px] text-center mt-2 block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            />
-          </div>
-
-          {/* Temp ImageURL */}
-          <div className="col-span-6 sm:col-span-3">
-            <label
-              htmlFor="first-name"
-              className="block text-sm font-medium leading-6 text-gray-900 pb-1"
-            >
-              Upload a photo of your recipe!
-            </label>
-            <input
-              value={imageURL}
-              onChange={(e) => setImageURL(e.target.value)}
-              placeholder=""
-              type="text"
-              name="imageURL"
-              id="imageURL"
-              className="mt-2 block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
 

@@ -5,7 +5,7 @@ import React from "react";
 const create = () => {
   return (
     <UILayout>
-      <RecipeShell />;
+      <RecipeShell />
     </UILayout>
   );
 };

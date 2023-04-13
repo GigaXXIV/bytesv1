@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import ProgressTabs from "./ProgressTabs";
+import ProgressTabs from "../Recipes/Create/RecipeProgressTabs";
 
 const navigation = [
   {

@@ -9,14 +9,16 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import AddIngredients from "../Ingredients/AddIngredients";
-import ProgressTabs from "../Recipes/Create/ProgressTabs";
+import ProgressTabs from "../Recipes/Create/RecipeProgressTabs";
 import RecipeInfo from "../Recipes/Create/RecipeInfo";
+import RecipeReview from "../Recipes/Create/RecipeReview";
 
-export default function RecipeForm() {
+export default function RecipeShell() {
   const router = useRouter();
-  const [step, setStep] = useState("information");
+  const [step, setStep] = useState("Information");
+  const [recipe, setRecipe] = useState({});
 
-  console.log(step);
+  // console.log(step);
 
   //   console.log("Recipe State: ", recipe);
   //   console.log("Description State: ", description);
@@ -45,6 +47,18 @@ export default function RecipeForm() {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
+
+  const handleRecipeInfoSubmit = (recipeData) => {
+    setRecipe(recipeData);
+    setStep("Ingredients");
+    console.log("Recipe State: ", recipeData);
+  };
+
+  const handleIngredientsSubmit = () => {
+    setStep("Review");
+  };
+
+  const handleReviewSubmit = () => {};
 
   return (
     <div className="lg:grid lg:grid-cols-9 lg:gap-x-5">
@@ -78,16 +92,18 @@ export default function RecipeForm() {
         </nav>
       </aside>
 
-      {/* Information */}
+      {/* Content of Recipe Shell */}
 
       <div className="space-y-1 sm:px-6 lg:col-span-8 lg:px-0">
         <div className="">
           <ProgressTabs />
         </div>
         {step === "Information" ? (
-          <RecipeInfo category={category} />
-        ) : (
+          <RecipeInfo category={category} onSubmit={handleRecipeInfoSubmit} />
+        ) : step === "Ingredients" ? (
           <AddIngredients />
+        ) : (
+          <RecipeReview />
         )}
       </div>
     </div>
