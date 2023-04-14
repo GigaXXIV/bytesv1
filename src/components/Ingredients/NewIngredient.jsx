@@ -3,8 +3,7 @@ import { useState } from "react";
 import IngredientList from "./IngredientList";
 
 export default function NewIngredient() {
-  const [list, setList] = useState(true);
-  console.log(list);
+  const [list, setList] = useState(false);
 
   const handleList = () => {
     // This function needs to go into the SearchIngredients component.

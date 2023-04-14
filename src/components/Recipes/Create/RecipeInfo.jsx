@@ -1,15 +1,22 @@
 import supabase from "@/config/supabaseClient";
-import React, { useState } from "react";
+import { useContext, useState } from "react";
 import { PlusIcon } from "@heroicons/react/20/solid";
 
-const RecipeInfo = ({ category, onSubmit }) => {
+import { CurrentRecipeContext } from "@/components/Context/CurrentRecipeContext";
+
+// @ts-ignore
+const RecipeInfo = ({ category }) => {
   const [recipe, setRecipe] = useState("");
   const [description, setDescription] = useState("");
   const [serves, setServes] = useState("");
+  // @ts-ignore
   const [imageURL, setImageURL] = useState("");
   const [formError, setFormError] = useState(
     "Please ensure all fields are filled out before submitting."
   );
+  // @ts-ignore
+  const { setRecipeInfo, handleRecipeInfoSubmit } =
+    useContext(CurrentRecipeContext);
 
   const submitRecipe = async (e) => {
     e.preventDefault();
@@ -38,8 +45,9 @@ const RecipeInfo = ({ category, onSubmit }) => {
     }
     if (recipeData) {
       setFormError(null);
+      setRecipeInfo(recipeData);
+      handleRecipeInfoSubmit(recipeData);
       console.log("Successfuly created new recipe: ", recipeData);
-      onSubmit(recipeData);
       // redirect to home page.
       //   navigate("/");
     }

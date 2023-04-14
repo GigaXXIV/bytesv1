@@ -5,8 +5,8 @@ const ingredients = [
   {
     id: 1,
     name: "Bun, Brioche, Gourmet",
-    amount: "1",
-    amountType: "63g Bun",
+    quantity: "1",
+    type: "63g Bun",
     kcals: "195",
     kj: "815.1",
     protein: "6",
@@ -17,8 +17,8 @@ const ingredients = [
   {
     id: 2,
     name: "Cheese, Swiss",
-    amount: "100",
-    amountType: "g",
+    quantity: "100",
+    type: "g",
     kcals: "418",
     kj: "1747.2",
     protein: "30.8",
@@ -29,8 +29,8 @@ const ingredients = [
   {
     id: 3,
     name: "Heinz, Special Burger Sauce",
-    amount: "100",
-    amountType: "ml",
+    quantity: "100",
+    type: "ml",
     kcals: "445",
     kj: "1860",
     protein: "1.2",
@@ -41,8 +41,8 @@ const ingredients = [
   {
     id: 4,
     name: "Beef Mince, Regular, 15% Fat, Raw",
-    amount: "100",
-    amountType: "g",
+    quantity: "100",
+    type: "g",
     kcals: "226",
     kj: "994.7",
     protein: "19.9",
@@ -108,13 +108,13 @@ export default function Example() {
                       scope="col"
                       className="w-28 py-3.5 px-1 text-center text-sm font-semibold text-gray-900"
                     >
-                      Amount
+                      Quantity
                     </th>
                     <th
                       scope="col"
                       className="w-32 py-3.5 px-1 text-center text-sm font-semibold text-gray-900"
                     >
-                      Amount Type
+                      Type
                     </th>
                     <th
                       scope="col"
@@ -180,10 +180,10 @@ export default function Example() {
                         {ingredient.name}
                       </td>
                       <td className="whitespace-nowrap py-4 px-1 text-center text-sm text-gray-500">
-                        {ingredient.amount}
+                        {ingredient.quantity}
                       </td>
                       <td className="whitespace-nowrap py-4 px-1 text-center text-sm text-gray-500">
-                        {ingredient.amountType}
+                        {ingredient.type}
                       </td>
                       <td className="whitespace-nowrap py-4 px-1 text-center text-sm text-gray-500">
                         {ingredient.kcals}

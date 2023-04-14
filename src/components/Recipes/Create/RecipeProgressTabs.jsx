@@ -28,7 +28,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function ProgressTabs() {
+export default function RecipeProgressTabs() {
   return (
     <div className="bg-white lg:border-t lg:border-b lg:border-gray-200">
       <nav className="mx-auto max-w-[1400]" aria-label="Progress">
